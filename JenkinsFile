@@ -1,10 +1,6 @@
 pipeline {
     agent any
-    environment {
-        DOTNET_ROOT = tool name: 'dotnet-sdk'
-        PATH = "${env.DOTNET_ROOT}/bin:${env.PATH}"
-    }
- 
+   
     stages {
         stage('Checkout') {
             steps {
@@ -17,14 +13,15 @@ pipeline {
         stage('Restore') {
             steps {
                 // Restore dependencies
-                sh 'dotnet restore "Test\\DotnetTemplate\\DotnetTemplate.csproj"'
+                
+                sh 'dotnet restore "./DotnetTemplate"'
             }
         }
  
         stage('Build') {
             steps {
                 // Build the application
-                sh 'dotnet build "Test\\DotnetTemplate\\DotnetTemplate.csproj" --configuration Release'
+                sh 'dotnet build "./DotnetTemplate" --configuration Release'
             }
         }
  
@@ -38,15 +35,8 @@ pipeline {
         stage('Publish') {
             steps {
                 // Publish the application
-                sh 'dotnet publish "Test\\DotnetTemplate\\DotnetTemplate.csproj" --configuration Release --output ./publish'
+                sh 'dotnet publish "./DotnetTemplate" --configuration Release --output ./publish'
             }
-        }
-    }
- 
-    post {
-        always {
-            // Clean up the workspace after the build
-            cleanWs()
         }
     }
 }
