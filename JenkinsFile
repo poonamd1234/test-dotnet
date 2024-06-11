@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the source repository
-                svn 'https://tipl0031.teleglobal.com/svn/Test/'
+                git 'https://github.com/poonamd1234/test-dotnet.git'
 
             }
         }
