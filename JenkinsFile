@@ -37,13 +37,12 @@ pipeline {
             }
         }
         
-        stage('Deploy') {
+       stage('Deploy') {
             steps {
-                // Deploy the application
+                // Show current user
                 sh 'whoami'
-                sh 'chown -R jenkins:jenkins /root/data'
-                sh 'chmod -R 777 /root/data/'
-                sh 'cp -r ./publish /data'
+                // Deploy the application
+                sh 'cp -r ./publish /home/jenkins/data'
             }
         }
     }
