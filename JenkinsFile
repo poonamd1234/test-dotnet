@@ -42,7 +42,8 @@ pipeline {
                 // Show current user
                 sh 'whoami'
                 // Deploy the application
-                sh 'cp -r ./publish /home/jenkins/data'
+                //sh 'cp -r ./publish /home/jenkins/data'
+               sh 'cp -r ./publish  /var/www/html/'
             }
         }
     }
