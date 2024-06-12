@@ -6,14 +6,12 @@ pipeline {
             steps {
                 // Checkout the code from the source repository
                 git url: 'https://github.com/poonamd1234/test-dotnet.git', branch: 'main'
-
             }
         }
  
         stage('Restore') {
             steps {
                 // Restore dependencies
-                
                 sh 'dotnet restore "./DotnetTemplate"'
             }
         }
@@ -37,9 +35,13 @@ pipeline {
                 // Publish the application
                 sh 'dotnet publish "./DotnetTemplate" --configuration Release --output ./publish'
             }
-        
-       
         }
-
+        
+        stage('Deploy') {
+            steps {
+                // Deploy the application to the specified directory on the local machine
+                sh 'cp -r ./publish /home'
+            }
+        }
     }
 }
