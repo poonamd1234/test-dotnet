@@ -40,7 +40,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy the application to the specified directory on the local machine
-                sh 'cp -r ./publish /home'
+                sh 'sudo cp -r ./publish /home'
+
             }
         }
     }
