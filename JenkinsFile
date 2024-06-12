@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy the application to the specified directory on the local machine
-                sh 'chown jenkins:jenkins /home'
+                sh sudo 'chown jenkins:jenkins /home'
                 sh 'chmod -R  777 /home'
                 sh 'sudo cp -r ./publish /home'
 
