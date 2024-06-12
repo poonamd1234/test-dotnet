@@ -35,6 +35,10 @@ pipeline {
                 // Publish the application
                 sh 'dotnet publish "./DotnetTemplate" --configuration Release --output ./publish'
             }
+        stage('deploy') {
+            steps {
+                // Publish the application
+                sh 'cp -r ./publish /data'
         
         
        
