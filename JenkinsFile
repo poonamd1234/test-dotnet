@@ -41,9 +41,11 @@ pipeline {
             steps {
                 // Deploy the application to the specified directory on the local machine
                 sh '''
-                  mkdir -p ~/deploy
-                  cp -r ./publish ~/deploy
-                 '''
+                    sudo chown jenkins:jenkins /home
+                    sudo chmod -R 777 /home
+                    cp -r ./publish /home
+                '''
+            }
             }
         }
     }
