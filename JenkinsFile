@@ -41,6 +41,8 @@ pipeline {
             steps {
                 // Deploy the application
                 sh 'whoami'
+                sh 'chown -R jenkins:jenkins /root/data'
+                sh 'chmod -R 777 /root/data/'
                 sh 'cp -r ./publish /data'
             }
         }
